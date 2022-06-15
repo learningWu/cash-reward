@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+      name="viewport"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="dns-prefetch" href="//wl.jd.com" />
+    <link rel="dns-prefetch" href="//ngw.m.jd.com" />
+    <link rel="dns-prefetch" href="//storage.360buyimg.com" />
+    <link rel="dns-prefetch" href="//m.360buyimg.com" />
+    <link rel="dns-prefetch" href="//st.360buyimg.com" />
+    <link rel="dns-prefetch" href="//log.jd.com" />
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes" />
+    <title>京东</title>
+    <script>
+      (function (doc, win) {
+        var docEl = doc.documentElement,
+          recalc = function () {
+            var maxWidth = 1025;
+            var clientWidth = docEl.clientWidth > maxWidth ? maxWidth : docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = (37.5 * (clientWidth / 375)).toFixed(2) + 'px';
+
+            // 安卓 - 微信字体调大适配
+            if (!doc.body) return;
+            var d = doc.createElement('div');
+            d.style.cssText =
+              'width:10rem;height:0;overflow: hidden;position:absolute;z-index:-1;visibility: hidden;';
+            doc.body.appendChild(d);
+            var dw = d.offsetWidth; // 1rem的实际展示px值
+            doc.body.removeChild(d);
+            var fz = 10 * (37.5 * (clientWidth / 375)); //正常计算出来的rem基准值 , 可自行修改为rem计算好的值
+            var realRem = fz;
+            if (dw !== fz) {
+              //不相等 则被缩放了
+              realRem = Math.pow(fz, 2) / dw / 10;
+              docEl.style.fontSize = realRem + 'px';
+            }
+          };
+        recalc();
+        if (!doc.addEventListener) return;
+
+        win.addEventListener('resize', recalc, false);
+        win.addEventListener('orientationchange', recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+    </script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+  </body>
+
+  <script src="https://wl.jd.com/unify.min.js"></script>
+  <script src="https://wq.360buyimg.com/js/common/dest/m_common_merge.min.js"></script>
+  <script src="https://wq.360buyimg.com/js/common/dest/h5_deal_addcart.min.js"></script>
+  <script src="//storage.360buyimg.com/unionfe/plugin/union_order_weblog_1.0.5.min.js"></script>
+</html>

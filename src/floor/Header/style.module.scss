@@ -1,0 +1,17 @@
+.header {
+  width: 750px;
+  height: 672px;
+  background: url('./imgs/header.png') no-repeat center center / cover;
+  position: relative;
+}
+
+.headerTitle {
+  width: 409px;
+  height: 77px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 163px;
+  background: url('./imgs/title.png') no-repeat center center / cover;
+}

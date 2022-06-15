@@ -1,0 +1,42 @@
+{
+  "name": "cash-reward",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "leolint-scan": "leolint scan",
+    "leolint-fix": "leolint fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@jmfe/jm-common": "^1.6.0-0",
+    "@pango/core": "^0.1.4-9",
+    "@pango/ui": "0.0.1-beta.8",
+    "core-js": "^3.16.0",
+    "classnames": "^2.3.1",
+    "lodash.debounce": "^4.0.8",
+    "lodash.get": "^4.4.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-lazyload": "^3.2.0"
+  },
+  "devDependencies": {
+    "@leo/lint": "0.1.3",
+    "postcss-px-to-viewport": "^1.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "leolint commit-file-scan",
+      "commit-msg": "leolint commit-msg-scan"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,vue}": "leolint exec eslint",
+    "**/*.{css,scss,less,acss}": "leolint exec stylelint"
+  },
+  "leo": {
+    "templateOrigin": "standard"
+  }
+}

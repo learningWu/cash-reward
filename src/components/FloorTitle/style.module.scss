@@ -1,0 +1,12 @@
+.floorTitle {
+  height: 110px;
+  color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 110px;
+    object-fit: cover;
+  }
+}
