@@ -26,9 +26,9 @@ function getData(functionId, params = {}) {
 
   let url = "/client.action?" + encodeSerialize(fullParams)
   return NetworkTool.post(url).then(responseObject => {
-    if (responseObject && responseObject?.status === 200 && responseObject?.data) {
+    if (responseObject && responseObject ?.status === 200 && responseObject ?.data) {
       const { code, data } = responseObject.data
-      if (code === 0 && data?.bizCode === 0 && data?.result) { // 数据正常
+      if (code === 0 && data ?.bizCode === 0 && data ?.result) { // 数据正常
         return data
       } else if (code === 300) { // 未登录
         window.location.href = 'https://plogin.m.jd.com/user/login.action?appid=1040&returnurl=' + encodeURIComponent(window.location.href)
@@ -37,7 +37,7 @@ function getData(functionId, params = {}) {
         return Promise.reject(data)
       }
     } else {
-      return Promise.reject(responseObject?.data)
+      return Promise.reject(responseObject ?.data)
     }
   }).catch(e => {
     return Promise.reject(e)
