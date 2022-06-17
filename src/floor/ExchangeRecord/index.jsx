@@ -33,10 +33,10 @@ class ExchangeRecord extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    console.log("mapStateToProps", state)
+const mapStateToProps = ({ exchangeAwardList }) => {
+    console.log("mapStateToProps", exchangeAwardList)
     return {
-        exchangeAwardList: state && state.exchangeAwardList
+        exchangeAwardList
     }
 }
 

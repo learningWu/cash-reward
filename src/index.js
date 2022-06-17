@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import rootReducer from './reducer/rootReducer.js'
 import fetchMiddleware from './middleware/fetchMiddleware.js'
 
-const store = createStore(rootReducer,{exchangeAwardList : []},applyMiddleware(fetchMiddleware))
+const store = createStore(rootReducer,applyMiddleware(fetchMiddleware))
 render(
   <React.StrictMode>
     <Provider store={store}>

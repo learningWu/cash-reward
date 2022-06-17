@@ -1,4 +1,6 @@
- const rootReducer = (state, action) => {
+ const rootReducer = (state = {
+   exchangeAwardList: []
+ }, action) => {
    switch (action.type) {
      case "fetchCashRewardList":
        break;
