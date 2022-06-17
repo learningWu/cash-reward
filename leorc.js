@@ -14,7 +14,7 @@ module.exports = {
       },
       dev: {
         https: false,
-        host: 'localhost',
+        host: 'local.jd.com',
         port: 3000,
       },
       quiet: false,

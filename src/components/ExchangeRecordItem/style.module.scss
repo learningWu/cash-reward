@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 631px;
+  margin: 0 auto;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 207, 152, 1);
+  padding: 25px 0;
+  img{
+      width: 68px;
+      height: 68px;
+  }
+  .content {
+    display: flex;
+    flex: 1;
+    margin-left: 35px;
+    flex-direction: column;
+    .title {
+      font-size: 28px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      color: rgba(128, 76, 25, 1);
+    }
+    .date {
+      font-size: 22px;
+      font-family: PingFangSC;
+      font-weight: normal;
+      margin-top: 12px;
+      color: rgba(204, 153, 102, 1)
+    }
+  }
+  .status {
+    font-size: 32px;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: rgba(128, 76, 25, 1);
+  }
+}

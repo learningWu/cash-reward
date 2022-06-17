@@ -1,0 +1,18 @@
+.container {
+  width: 702px;
+  height: 1454px;
+  background: rgba(255, 249, 242, 1);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  margin: 40px auto 0;
+  overflow: scroll;
+  .tip {
+    font-size: 24px;
+    font-family: PingFang-SC;
+    font-weight: normal;
+    width: 279px;
+    height: 28px;
+    margin: 100px auto 50px;
+    color: rgba(185, 161, 133, 1);
+  }
+}
