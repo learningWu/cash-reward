@@ -43,7 +43,9 @@ const mapStateToProps = ({ exchangeAwardList }) => {
 const mapDispatchToProps = dispatch => {
     console.log("mapDispatchToProps", dispatch)
     return {
-        fetchList: (params) => dispatch(getFetchAction(params))
+        fetchList: (params) => dispatch(getFetchAction({
+            functionId: "cash_exchange_awardList"
+        }))
     }
 }
 

@@ -1,14 +1,17 @@
 const fetchMiddleware = store => next => action => {
-  if (typeof action === 'function') {
-    return action().then((result) => {
+  if (typeof action.operation === 'function') {
+    return action.operation().then((result) => {
       store.dispatch({
-        type: 'fetchCashRewardListSuccess',
-        payload: result.result.awardList
+        type: 'fetchSuccess',
+        mark: action.mark,
+        payload: result
       })
     }).catch((reason) => {
       console.log("fetch fail", reason)
       store.dispatch({
-        type: 'fetchCashRewardListFail'
+        type: 'fetchFail',
+        mark: action.mark,
+        payload: reason
       })
     })
   }

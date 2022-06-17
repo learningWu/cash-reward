@@ -1,22 +1,8 @@
- const rootReducer = (state = {
-   exchangeAwardList: []
- }, action) => {
-   switch (action.type) {
-     case "fetchCashRewardList":
-       break;
-     case "fetchCashRewardListSuccess":
-       console.log("fetchCashRewardListSuccess", state, action)
-       return {
-         exchangeAwardList: [...state.exchangeAwardList, ...action.payload]
-       }
-       break;
-     case "fetchCashRewardListLoading":
-       break;
-     case "fetchCashRewardListFail":
-       break;
-     default:
-       return state;
-   }
- }
+ import exchangeRecordReducer from '../floor/ExchangeRecord/reducer/exchangeRecordReducer.js'
+ import {
+   combineReducers
+ } from 'redux'
 
- export default rootReducer
+ export default combineReducers({
+   exchangeAwardList: exchangeRecordReducer
+ })
