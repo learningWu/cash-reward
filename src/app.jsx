@@ -1,30 +1,28 @@
 import React from 'react';
 
 import { ErrorBoundary } from '@pango/ui';
-import { ExchangeRecord, Header } from './floor';
-
 import './common/styles/reset.scss';
 import '@pango/ui/dist/pango.css';
+import { ExchangeRecordPage, ExchangeCenterPage } from './page';
+export const history = require('history').createHashHistory()
 import {
-  getData
-} from './common/util/network.js'
+  Link,
+  HashRouter,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 export default () => {
-  // getData("cash_mob_home", {}).then((result) => {
-  //   console.log(result)
-  // }).catch((reason) => {
-  //   console.log(reason)
-  // })
-  // getData("cash_exchange_awardList", { pageNo: 1, type: 1 }).then((result) => {
-  //   console.log(result)
-  // }).catch((reason) => {
-  //   console.log(reason)
-  // })
-
   return (
-      <ErrorBoundary errorholder={null}>
-        <Header />
-        <ExchangeRecord />
-      </ErrorBoundary>
+    <HashRouter>
+      <Switch>
+        <Route path="/exchangerecord" component={ExchangeRecordPage} />
+        <Route path="/exchangecenter" component={ExchangeCenterPage} />
+        <Route>
+          <Redirect to="/exchangerecord" />
+        </Route>
+      </Switch>
+    </HashRouter>
   );
 };
