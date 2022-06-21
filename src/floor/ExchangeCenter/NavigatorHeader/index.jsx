@@ -6,12 +6,11 @@ import React, {
 import styles from './style.module.scss';
 import { connect } from 'react-redux'
 import { getFetchAction } from '../../../action/createAction'
-// import Swiper from '../../../components/Swiper/index.jsx'
 
-const AwardExchange = (props) => {
+const NavigatorHeader = (props) => {
 
-    return <div>
-        奖励兑换
+    return <div className={styles.container}>
+        <img src={require('./imgs/tippic.png')} className={styles.exchangeRecord} />
     </div>
 }
-export default AwardExchange
+export default NavigatorHeader

@@ -4,7 +4,8 @@ import ExchangeRecord from './ExchangeRecord';
 import {
   AwardExchange,
   MoneyHeader,
-  Withdraw
+  Withdraw,
+  NavigatorHeader
 } from './ExchangeCenter'
 
 export {
@@ -12,5 +13,6 @@ export {
   Header,
   AwardExchange,
   MoneyHeader,
-  Withdraw
+  Withdraw,
+  NavigatorHeader
 };

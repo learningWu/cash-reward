@@ -9,8 +9,11 @@ import { getFetchAction } from '../../../action/createAction'
 
 const MoneyHeader = (props) => {
 
-    return <div>
-        我的金额
+    return <div className={styles.container}>
+        <div className={styles.tip}>可在京东APP搜“领京豆”参与活动</div>
+        <span className={styles.des}>我的金额（元）</span>
+        <div className={styles.money}><span>0.76</span>元</div>
+        <img src={require('./imgs/title_bg.png')} />
     </div>
 }
 export default MoneyHeader

@@ -2,7 +2,8 @@ import {
   Header,
   AwardExchange,
   MoneyHeader,
-  Withdraw
+  Withdraw,
+  NavigatorHeader
 } from '../floor';
 
 import '../common/styles/reset.scss';
@@ -28,6 +29,7 @@ export default () => {
       <Header />
       <Provider store={store}>
         <>
+        <NavigatorHeader />
         <MoneyHeader />
         <Withdraw/>
         <AwardExchange/>
