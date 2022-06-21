@@ -15,7 +15,7 @@ import React, {
 import { ErrorBoundary } from '@pango/ui';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from '../reducer/rootReducer.js'
+import rootReducer from '../reducer/exchangeRecordRootReducer.js'
 const store = createStore(rootReducer, applyMiddleware(fetchMiddleware))
 import fetchMiddleware from '../middleware/fetchMiddleware.js'
 export default () => {

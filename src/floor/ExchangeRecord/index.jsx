@@ -5,9 +5,6 @@ import React, {
 } from 'react';
 import ExchangeRecordItem from '../../components/ExchangeRecordItem'
 import styles from './style.module.scss';
-import {
-    getData
-} from '../../common/util/network.js'
 import { connect } from 'react-redux'
 import { getFetchAction } from '../../action/createAction'
 
