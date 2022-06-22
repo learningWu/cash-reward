@@ -4,6 +4,9 @@
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   margin: 50px auto 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column; //   现金提现 头部
   .header {
     width: 710px;
     height: 89px;
@@ -29,7 +32,7 @@
       font-weight: normal;
       color: rgba(21, 21, 21, 1);
     }
-  }
+  } //   现有金钱
   .nowMoney {
     background-image: url('./imgs/bubble.png');
     background-size: contain;
@@ -66,5 +69,12 @@
       font-weight: 500;
       color: rgba(255, 255, 255, 1);
     }
+  } //   提现至微信
+  .withdrawToWX {
+    width: 440px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 34px;
   }
 }
