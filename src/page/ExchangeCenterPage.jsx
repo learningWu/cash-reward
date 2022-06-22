@@ -22,18 +22,18 @@ import rootReducer from '../reducer/exchangeCenterRootReducer.js'
 const store = createStore(rootReducer, applyMiddleware(fetchMiddleware))
 import fetchMiddleware from '../middleware/fetchMiddleware.js'
 import { ErrorBoundary } from '@pango/ui';
-
+import styles from './style.module.scss';
 export default () => {
   return (
     <ErrorBoundary errorholder={null}>
       <Header />
       <Provider store={store}>
-        <>
-        <NavigatorHeader />
-        <MoneyHeader />
-        <Withdraw/>
-        <AwardExchange/>
-        </>
+        <div className={styles.container}>
+          <NavigatorHeader />
+          <MoneyHeader />
+          <Withdraw />
+          <AwardExchange />
+        </div>
       </Provider>
     </ErrorBoundary>
   );

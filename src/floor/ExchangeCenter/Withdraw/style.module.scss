@@ -1,0 +1,70 @@
+.container {
+  width: 710px;
+  height: 502px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  margin: 50px auto 0;
+  .header {
+    width: 710px;
+    height: 89px;
+    padding: 10px;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 68.39775690774667%, rgba(255, 242, 242, 1) 100%);
+    border: 7px solid rgba(255, 255, 255, 1);
+    border-radius: 22px 24px 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    .title {
+      font-size: 30px;
+      font-family: PingFangHK;
+      font-weight: 500;
+      margin-left: 24px;
+      color: rgba(21, 21, 21, 1);
+    }
+    .des {
+      font-size: 24px;
+      font-family: PingFangHK;
+      margin-left: 20px;
+      font-weight: normal;
+      color: rgba(21, 21, 21, 1);
+    }
+  }
+  .nowMoney {
+    background-image: url('./imgs/bubble.png');
+    background-size: contain;
+    width: 370px;
+    margin: 30px auto 0;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    .limitMoney {
+      font-size: 50px;
+      font-family: JDZhengHT-EN;
+      font-weight: normal;
+      color: rgba(255, 255, 255, 1);
+    }
+    .unit {
+      font-size: 28px;
+      font-family: PingFangSC;
+      font-weight: 500;
+      margin-left: 10px;
+      color: rgba(255, 255, 255, 1);
+    }
+    .splitLine {
+      width: 1px;
+      height: 30px;
+      margin: 0 22px;
+      background: rgba(255, 255, 255, 1);
+    }
+    .have {
+      font-size: 28px;
+      font-family: PingFangSC;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
