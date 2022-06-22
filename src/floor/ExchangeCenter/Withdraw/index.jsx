@@ -42,7 +42,7 @@ const Withdraw = (props) => {
                 moneyYuan: item.moneyYuan,
                 des: item.status === 1 ? "元提现" : "元待解锁",
                 percent: getNodeProgress(item.node),
-                progressStatus: item.status === 1 ? "completed" : "unCompleted",
+                status: item.status === 1 ? "completed" : "unCompleted",
             }
         })
 
@@ -56,6 +56,17 @@ const Withdraw = (props) => {
 
     const getBtn = () => {
         // 判断按钮状态
+
+        if (withdrawList
+            && withdrawList.length == 3
+            && withdrawList[2].node == 3
+            && withdrawList[2].status == 1) {
+            // 全部提现完成
+            return mapStateToBtnUrl.geryAllWithdrawed
+        } else {
+            return waitWithdraw && waitWithdraw.status == 0 ? mapStateToBtnUrl.greyWithdraw : mapStateToBtnUrl.redWithdraw
+        }
+
         return mapStateToBtnUrl.redWithdraw
     }
 
