@@ -9,10 +9,27 @@ import { getFetchAction } from '../../../action/createAction'
 
 const MoneyHeader = (props) => {
 
+    const {
+        canExchangeRedpack,
+        canExchangeBeans,
+        userMoney,
+        headerBanner,
+    } = props.headerData
+
     return <div className={styles.container}>
-        <div className={styles.tip}>可在京东APP搜“领京豆”参与活动</div>
+        <div className={styles.tip}>{headerBanner && headerBanner[0]}</div>
         <span className={styles.des}>我的金额（元）</span>
-        <div className={styles.money}><span>0.76</span>元</div>
+        <div className={styles.money}><span>{userMoney}</span>元</div>
     </div>
 }
-export default MoneyHeader
+
+export default connect(({ homeData = {} }) => {
+    return {
+        headerData: {
+            canExchangeRedpack: homeData.canExchangeRedpack,
+            canExchangeBeans: homeData.canExchangeBeans,
+            userMoney: homeData.userMoney,
+            headerBanner: homeData.headerBanner,
+        }
+    }
+})(MoneyHeader)

@@ -39,36 +39,22 @@ const AwardProgress = (props) => {
   </div>)
 }
 
-const DesProgress = () => {
-
-  const awardText = [
-    {
-      percent: 10,
-      text: 2,
-      withdrawed: true
-    },
-    {
-      percent: 50,
-      text: 10,
-      withdrawed: false
-    },
-    {
-      percent: 100,
-      text: 100,
-      withdrawed: false
-    }
-  ]
+const DesProgress = (props) => {
+  if (!props) {
+    return null
+  }
+  const { withdrawProgressMetaList = [] } = props.withdrawProgressMeta || {}
 
   return (<div className={styles.desContainer}>
     {
-      awardText.map((item) => {
+      withdrawProgressMetaList.map((item) => {
         return <div className={styles.awardDescribe} style={{ left: `${item.percent}%` }} key={item.text}>
           <span className={styles.moneyHighlight}>
-            {item.text}
+            {item.moneyYuan}
             <span>元</span>
           </span>
           <span className={styles.des}>
-            {item.withdrawed ? "提现" : "待解锁"}
+            {item.des}
           </span>
         </div>
       })
@@ -77,10 +63,13 @@ const DesProgress = () => {
 }
 
 const Container = (props) => {
+  const {
+    withdrawProgressMeta
+  } = props
   return (
     <div className={styles.container}>
-      <AwardProgress />
-      <DesProgress />
+      <AwardProgress withdrawProgressMeta={withdrawProgressMeta} />
+      <DesProgress withdrawProgressMeta={withdrawProgressMeta} />
     </div>
   )
 }
