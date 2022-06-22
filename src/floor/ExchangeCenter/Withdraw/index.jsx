@@ -40,7 +40,7 @@ const Withdraw = (props) => {
             }
             return {
                 moneyYuan: item.moneyYuan,
-                des: item.status === 1 ? "元提现" : "元待解锁",
+                des: item.status === 1 ? "提现" : "待解锁",
                 percent: getNodeProgress(item.node),
                 status: item.status === 1 ? "completed" : "unCompleted",
             }
