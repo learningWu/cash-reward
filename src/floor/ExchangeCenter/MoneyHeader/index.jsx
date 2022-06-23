@@ -18,7 +18,7 @@ const MoneyHeader = (props) => {
     } = props.headerData
 
     return <div className={styles.container}>
-        <Banner />
+        {/* <Banner /> */}
         <div className={styles.tip}>{headerBanner && headerBanner[0]}</div>
         <span className={styles.des}>我的金额（元）</span>
         <div className={styles.money}><span>{userMoney}</span>元</div>

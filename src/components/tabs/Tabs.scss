@@ -1,0 +1,39 @@
+.tab-item-container {
+  width: 122px;
+  height: 81px;
+  border-radius: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  .time {
+    font-size: 32px;
+    font-family: JDZhengHT;
+    font-weight: bold;
+  }
+  .des {
+    font-size: 20px;
+  }
+}
+
+.tab-item-seleted {
+  background: linear-gradient(270deg, rgba(255, 69, 0, 1) 0%, rgba(255, 20, 81, 1) 100%);
+  color: white;
+  box-shadow: 0 5px 18px 0 rgba(255, 182, 182, 1);
+  transition-property: all;
+  transition-duration: 1s;
+}
+
+.tab-item-unselected {
+  color: black;
+  background: transparent;
+  transition-property: all;
+  transition-duration: 1s;
+  background: white;
+}
+
+.tabs-container {
+  width: 430px;
+  justify-content: space-between;
+  height: 81px;
+}

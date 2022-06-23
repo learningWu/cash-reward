@@ -12,26 +12,6 @@ const Banner = () => {
             currentTranslateY: 0,
             targetTranslateY: -10
         }
-
-        setTimeout(() => {
-            console.log(translateData.current)
-            const animation = containerRef.current.animate(
-                // keyframe
-                // { transform: `translateY(${translateData.current.currentTranslateY}px)` },
-                { transform: `translateY(${translateData.current.targetTranslateY}px)` },
-                {
-                    // timing options
-                    duration: 1000,
-                    iterations: 1,
-                })
-            animation.onfinish = () => {
-                console.log("xx", translateData.current)
-                translateData.current = {
-                    currentTranslateY: translateData.current.targetTranslateY,
-                    targetTranslateY: translateData.current.targetTranslateY - 10
-                }
-            }
-        }, 2000)
     }, [])
 
     return (
