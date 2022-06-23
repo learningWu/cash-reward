@@ -15,8 +15,10 @@ const AwardExchange = (props) => {
     const [activeIndex, setActiveIndex] = useState(0)
 
     const onTabChange = (index) => {
-        console.log("onTabChange",index)
-        setActiveIndex(index)
+        console.log("onTabChange", index)
+        if (activeIndex !== index) {
+            setActiveIndex(index)
+        }
     }
 
     return <div className={styles.container}>

@@ -101,22 +101,17 @@ export default (props) => {
 
   const { activeIndex, onSlideChangeListener } = props
   const swiperRef = useRef(null)
-  let isOutSlide = false
   if (swiperRef && swiperRef.current && swiperRef.current.activeIndex !== activeIndex) {
     swiperRef.current.slideTo(activeIndex)
-    isOutSlide = true
   }
 
   return (
     <Swiper
       className="swiper-wrapper"
       onSlideChange={() => {
-        console.log('slide change',"swiperRef.current.activeIndex:",swiperRef.current.activeIndex,"activeIndex",activeIndex)
+        console.log('slide change', "swiperRef.current.activeIndex:", swiperRef.current.activeIndex, "activeIndex", activeIndex)
         console.log(swiperRef.current, onSlideChangeListener)
-        if (!isOutSlide) {
-          typeof onSlideChangeListener === 'function' && onSlideChangeListener(swiperRef.current.activeIndex)
-          isOutSlide = false
-        }
+        typeof onSlideChangeListener === 'function' && onSlideChangeListener(swiperRef.current.activeIndex)
       }}
       onSwiper={(swiper) => {
         swiperRef.current = swiper
