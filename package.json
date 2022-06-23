@@ -25,7 +25,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^5.1.0",
     "redux": "^3.6.0",
-    "redux-saga": "^0.15.3"
+    "redux-saga": "^0.15.3",
+    "swiper": "^8.2.4"
   },
   "devDependencies": {
     "@leo/lint": "0.1.3",

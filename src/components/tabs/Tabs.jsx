@@ -50,6 +50,9 @@ class Tabs extends Component {
             this.setState({
                 activeIndex
             })
+            if (typeof this.props.onTabChange === 'function') {
+                this.props.onTabChange(activeIndex)
+            }
         }
     }
 

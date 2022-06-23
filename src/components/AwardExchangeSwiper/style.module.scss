@@ -1,0 +1,60 @@
+.awardContainer {
+  width: 210px;
+  height: 276px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 16px 0 rgba(248, 246, 241, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 20px;
+  break-inside: avoid;
+  .exchangeConsume {
+    width: 142px;
+    height: 48px;
+    background: linear-gradient(127.76deg, rgba(250, 92, 25, 1) 0%, rgba(250, 56, 25, 1) 16.59259259%, rgba(250, 27, 75, 1) 55.40740741%, rgba(250, 115, 25, 1) 100%);
+    border-radius: 24px;
+    font-size: 24px;
+    font-family: PingFangTC;
+    margin-top: 30px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    line-height: 48px;
+    text-align: center;
+  }
+}
+
+.redBagContainer {
+  width: 112px;
+  height: 134px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("https://m.360buyimg.com/mobilecal/jfs/t1/197922/8/12253/3788/61613756Ee865f89b/294ce55672d8bf9b.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  .redBagInfo {
+    display: flex;
+    flex-direction: row;
+    font-family: JDZhengHT;
+    font-weight: normal;
+    align-items: baseline;
+    transform: translateY(-20px);
+    color: rgba(255, 192, 144, 1);
+    .unit {
+      font-size: 20px;
+    }
+    .money {
+      font-size: 52px;
+    }
+  }
+}
+
+.listContainer {
+  width: 710px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+}

@@ -1,15 +1,17 @@
 .container {
   width: 710px;
-  height: 420px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 20px;
+  height: auto;
   margin: 33px auto 0;
   align-items: center;
   display: flex;
   flex-direction: column;
+  background: rgba(252,226,170,1);
+  border-radius: 20px;
   .header {
     width: 710px;
     height: 100px;
+    background: white;
+    border-radius: 20px 20px 0 0;
     align-items: center;
     display: flex;
     flex-direction: row;
