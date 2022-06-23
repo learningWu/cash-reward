@@ -6,9 +6,6 @@ class TabNav extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            tabsItem: [...(props.tabsItem || [])]
-        }
     }
 
     onclickHandle(index) {
@@ -20,10 +17,10 @@ class TabNav extends Component {
 
     getTabs() {
         const { activeIndex = 0 } = this.props
-        console.log("getTabs", this.state.tabsItem)
-        return this.state.tabsItem.map((item, index) => {
+        console.log("getTabs", this.props.tabsItem)
+        return this.props.tabsItem.map((item, index) => {
             return (
-                <div onClick={this.onclickHandle.bind(this, index)}>
+                <div onClick={this.onclickHandle.bind(this, index)} key={item.beginTime}>
                     {this.props.renderChild(item, index)}
                 </div>
             )

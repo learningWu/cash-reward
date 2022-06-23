@@ -22,10 +22,18 @@ const AwardExchange = (props) => {
         }
     }
 
+    const tabs = rewardExchangePanel && rewardExchangePanel.roundList && rewardExchangePanel.roundList.map((item) => {
+        return {
+            status: item.status,
+            beginTime: item.beginTime
+        }
+    })
+
+    console.log("tabs", tabs)
     return <div className={styles.container}>
         <div className={styles.header}>
             <span className={styles.rewardChangeText}>奖励兑换</span>
-            <Tabs onTabChange={onTabChange} activeIndex={activeIndex} />
+            <Tabs onTabChange={onTabChange} activeIndex={activeIndex} tabs={tabs} />
         </div>
         <AwardExchangeSwiper
             activeIndex={activeIndex}

@@ -82,19 +82,19 @@ const AwardExchangeList = (props) => {
   return (
     <div className={styles.listContainer}>
       {awardExchangeList.map((item) => {
-        return <AwardExchangeItem item={item} />
+        return <AwardExchangeItem item={item}  key={item.assignmentId}/>
       })}
     </div>
   )
 }
 
 export default (props) => {
-  const { activeIndex, onSlideChangeListener, rewardExchangePanel} = props
+  const { activeIndex, onSlideChangeListener, rewardExchangePanel } = props
   const swiperRef = useRef(null)
   if (swiperRef && swiperRef.current && swiperRef.current.activeIndex !== activeIndex) {
     swiperRef.current.slideTo(activeIndex)
   }
-  console.log("rewardExchangePanel",rewardExchangePanel)
+  console.log("rewardExchangePanel", rewardExchangePanel)
   const roundList = rewardExchangePanel && rewardExchangePanel.roundList || []
 
   return (
@@ -111,7 +111,7 @@ export default (props) => {
       }}
     >
       {roundList.map((item) => {
-        return <SwiperSlide>
+        return <SwiperSlide key={item.beginTime}>
           <AwardExchangeList awardExchangeList={item.rewardList} />
         </SwiperSlide>
       })}

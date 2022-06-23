@@ -25,21 +25,11 @@ class Tabs extends Component {
 
     constructor(props) {
         super(props)
-        const mapStatus2Des = {
+        this.mapStatus2Des = {
             0: "已经结束",
             1: "抢购中",
             2: "即将开始"
         }
-        this.tabsItem = [{
-            beginTime: "06:00",
-            des: mapStatus2Des[0]
-        }, {
-            beginTime: "08:00",
-            des: mapStatus2Des[1]
-        }, {
-            beginTime: "16:00",
-            des: mapStatus2Des[2]
-        }]
     }
 
     onTabChange(activeIndex) {
@@ -51,11 +41,20 @@ class Tabs extends Component {
     }
 
     render() {
+        console.log('props',this.props)
+        const { tabs = [] } = this.props
+        const showTabs = tabs.map((item) => {
+            return {
+                beginTime: item.beginTime,
+                des: this.mapStatus2Des[item.status]
+            }
+        })
+        console.log("showTabs",showTabs)
         return <TabNav
             className='tabs-container'
-            tabsItem={this.tabsItem}
+            tabsItem={showTabs}
             onTabChange={this.onTabChange.bind(this)}
-            activeIndex = {this.props.activeIndex}
+            activeIndex={this.props.activeIndex}
             renderChild={
                 (itemData, index) => {
                     return (<TabNavItem
