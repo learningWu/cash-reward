@@ -15,7 +15,7 @@ const AwardExchange = (props) => {
     const [activeIndex, setActiveIndex] = useState(0)
 
     const onTabChange = (index) => {
-        console.log("onTabChange")
+        console.log("onTabChange",index)
         setActiveIndex(index)
     }
 

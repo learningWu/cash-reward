@@ -101,8 +101,10 @@ export default (props) => {
 
   const { activeIndex, onSlideChangeListener } = props
   const swiperRef = useRef(null)
+  let isOutSlide = false
   if (swiperRef && swiperRef.current && swiperRef.current.activeIndex !== activeIndex) {
     swiperRef.current.slideTo(activeIndex)
+    isOutSlide = true
   }
 
   return (
@@ -111,8 +113,9 @@ export default (props) => {
       onSlideChange={() => {
         console.log('slide change',"swiperRef.current.activeIndex:",swiperRef.current.activeIndex,"activeIndex",activeIndex)
         console.log(swiperRef.current, onSlideChangeListener)
-        if (swiperRef.current.activeIndex !== activeIndex) {
-          // typeof onSlideChangeListener === 'function' && onSlideChangeListener(activeIndex)
+        if (!isOutSlide) {
+          typeof onSlideChangeListener === 'function' && onSlideChangeListener(swiperRef.current.activeIndex)
+          isOutSlide = false
         }
       }}
       onSwiper={(swiper) => {

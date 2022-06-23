@@ -25,9 +25,6 @@ class Tabs extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            activeIndex: props.activeIndex || 0
-        }
         const mapStatus2Des = {
             0: "已经结束",
             1: "抢购中",
@@ -46,10 +43,7 @@ class Tabs extends Component {
     }
 
     onTabChange(activeIndex) {
-        if (activeIndex !== this.state.activeIndex) {
-            this.setState({
-                activeIndex
-            })
+        if (activeIndex !== this.props.activeIndex) {
             if (typeof this.props.onTabChange === 'function') {
                 this.props.onTabChange(activeIndex)
             }
@@ -61,12 +55,12 @@ class Tabs extends Component {
             className='tabs-container'
             tabsItem={this.tabsItem}
             onTabChange={this.onTabChange.bind(this)}
-            {...this.state}
+            activeIndex = {this.props.activeIndex}
             renderChild={
                 (itemData, index) => {
                     return (<TabNavItem
                         itemData={itemData}
-                        isSelected={index === this.state.activeIndex} />)
+                        isSelected={index === this.props.activeIndex} />)
                 }
             }
         >
