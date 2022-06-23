@@ -12,110 +12,90 @@ import styles from './style.module.scss';
 
 
 const RedBagItem = (props) => {
+
+  const { // 奖励列表
+    assignmentId, // 活动Id
+    rewardType, // 奖励类型，0：红包；1：京豆；2：优惠券
+    cost, //需要扣减的虚拟金（单位：元）
+    status, // 0：未兑换，1：已兑换
+    redpackAmount, // 红包面额
+  } = props
+
   return (<div className={styles.redBagContainer}>
     <div className={styles.redBagInfo}>
       <span className={styles.unit}>¥</span>
-      <span className={styles.money}>4</span>
+      <span className={styles.money}>{redpackAmount}</span>
     </div>
   </div>)
 }
 
 const CouponItem = (props) => {
+
+  const {
+    assignmentId, // 活动Id，领券时需要透传
+    rewardType, // 奖励类型，0：红包；1：京豆；2：优惠券
+    cost, //需要扣减的虚拟金（单位：元）
+    status, // 0：未兑换，1：已兑换
+    disCount, // 优惠券面额
+    quota, // 优惠券消费门槛
+    limitStr, // 优惠券使用范围
+    beginTime2EndTime, // 优惠券时间
+    couponRoundKey, // 优惠券round key，领券时需要透传
+    couponName // 优惠券名称
+  } = props
   return (<div className={styles.couponItemContainer}>
-    <div className={styles.quota}>满200元可用</div>
+    <div className={styles.quota}>{quota}</div>
     <div className={styles.couponInfo}>
       <span className={styles.unit}>¥</span>
-      <span className={styles.money}>30</span>
+      <span className={styles.money}>{disCount}</span>
     </div>
-    <div className={styles.limitStr}>全品类通用</div>
+    <div className={styles.limitStr}>{limitStr}</div>
   </div>)
 }
 
 const AwardExchangeItem = (props) => {
   const { item } = props
-
   let ContentComponent;
 
   switch (item.rewardType) {
     case 0:
-      ContentComponent = RedBagItem
+      ContentComponent = <RedBagItem {...item} />
       break
     case 2:
-      ContentComponent = CouponItem
+      ContentComponent = <CouponItem {...item} />
       break
     default:
-      ContentComponent = RedBagItem
+      ContentComponent = null
   }
 
-  return (<div className={styles.awardContainer}>
-    <ContentComponent />
+  return (ContentComponent && <div className={styles.awardContainer}>
+    {ContentComponent}
     <div className={styles.exchangeConsume}>
-      1元兑换
+      {item.cost}元兑换
       </div>
   </div>)
 }
 
 
 const AwardExchangeList = (props) => {
+  const { awardExchangeList = [] } = props
   return (
     <div className={styles.listContainer}>
-      {[{ // 奖励列表
-        "assignmentId": "", // 活动Id
-        "rewardType": 0, // 奖励类型，0：红包；1：京豆；2：优惠券
-        "cost": "", //需要扣减的虚拟金（单位：元）
-        "status": 1, // 0：未兑换，1：已兑换
-        "redpackAmount": "", // 红包面额
-      }, {
-        "assignmentId": "", // 活动Id
-        "rewardType": 1, // 奖励类型，0：红包；1：京豆；2：优惠券
-        "cost": "", //需要扣减的虚拟金（单位：元）
-        "status": 1, // 0：未兑换，1：已兑换
-        "beanAmount": "", // 京豆面额
-      }, {
-        "assignmentId": "", // 活动Id，领券时需要透传
-        "rewardType": 2, // 奖励类型，0：红包；1：京豆；2：优惠券
-        "cost": "", //需要扣减的虚拟金（单位：元）
-        "status": 1, // 0：未兑换，1：已兑换
-        "disCount": "", // 优惠券面额
-        "quota": "", // 优惠券消费门槛
-        "limitStr": "", // 优惠券使用范围
-        "beginTime2EndTime": "", // 优惠券时间
-        "couponRoundKey": "", // 优惠券round key，领券时需要透传
-        "couponName": "" // 优惠券名称
-      }, {
-        "assignmentId": "", // 活动Id
-        "rewardType": 1, // 奖励类型，0：红包；1：京豆；2：优惠券
-        "cost": "", //需要扣减的虚拟金（单位：元）
-        "status": 1, // 0：未兑换，1：已兑换
-        "beanAmount": "", // 京豆面额
-      }, {
-        "assignmentId": "", // 活动Id，领券时需要透传
-        "rewardType": 2, // 奖励类型，0：红包；1：京豆；2：优惠券
-        "cost": "", //需要扣减的虚拟金（单位：元）
-        "status": 1, // 0：未兑换，1：已兑换
-        "disCount": "", // 优惠券面额
-        "quota": "", // 优惠券消费门槛
-        "limitStr": "", // 优惠券使用范围
-        "beginTime2EndTime": "", // 优惠券时间
-        "couponRoundKey": "", // 优惠券round key，领券时需要透传
-        "couponName": "" // 优惠券名称
-      }
-        // ...
-      ].map((item) => {
+      {awardExchangeList.map((item) => {
         return <AwardExchangeItem item={item} />
-      })
-      }
+      })}
     </div>
   )
 }
 
 export default (props) => {
-
-  const { activeIndex, onSlideChangeListener } = props
+  const { activeIndex, onSlideChangeListener, rewardExchangePanel} = props
   const swiperRef = useRef(null)
   if (swiperRef && swiperRef.current && swiperRef.current.activeIndex !== activeIndex) {
     swiperRef.current.slideTo(activeIndex)
   }
+  console.log("rewardExchangePanel",rewardExchangePanel)
+  const roundList = rewardExchangePanel && rewardExchangePanel.roundList || []
 
   return (
     <Swiper
@@ -130,16 +110,11 @@ export default (props) => {
         console.log(swiper)
       }}
     >
-      <SwiperSlide>
-        <AwardExchangeList />
-      </SwiperSlide>
-      <SwiperSlide>
-        <AwardExchangeList />
-      </SwiperSlide>
-      <SwiperSlide>
-        <AwardExchangeList />
-      </SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
+      {roundList.map((item) => {
+        return <SwiperSlide>
+          <AwardExchangeList awardExchangeList={item.rewardList} />
+        </SwiperSlide>
+      })}
     </Swiper>
   );
 };

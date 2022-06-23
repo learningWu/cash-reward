@@ -11,7 +11,8 @@ import Tabs from '../../../components/tabs/Tabs.jsx'
 import AwardExchangeSwiper from '../../../components/AwardExchangeSwiper'
 
 const AwardExchange = (props) => {
-
+    console.log("AwardExchange", props.rewardExchangePanel)
+    const { rewardExchangePanel } = props
     const [activeIndex, setActiveIndex] = useState(0)
 
     const onTabChange = (index) => {
@@ -26,7 +27,12 @@ const AwardExchange = (props) => {
             <span className={styles.rewardChangeText}>奖励兑换</span>
             <Tabs onTabChange={onTabChange} activeIndex={activeIndex} />
         </div>
-        <AwardExchangeSwiper activeIndex={activeIndex} onSlideChangeListener={onTabChange} />
+        <AwardExchangeSwiper
+            activeIndex={activeIndex}
+            onSlideChangeListener={onTabChange}
+            rewardExchangePanel={rewardExchangePanel}
+        />
     </div>
 }
-export default AwardExchange
+export default connect(({ homeData }) => ({ rewardExchangePanel: homeData.rewardExchangePanel })
+)(AwardExchange)
