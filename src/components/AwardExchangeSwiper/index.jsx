@@ -20,23 +20,35 @@ const RedBagItem = (props) => {
   </div>)
 }
 
+const CouponItem = (props) => {
+  return (<div className={styles.couponItemContainer}>
+    <div className={styles.quota}>满200元可用</div>
+    <div className={styles.couponInfo}>
+      <span className={styles.unit}>¥</span>
+      <span className={styles.money}>30</span>
+    </div>
+    <div className={styles.limitStr}>全品类通用</div>
+  </div>)
+}
+
 const AwardExchangeItem = (props) => {
   const { item } = props
-  // switch (item.rewardType) {
-  //   case 0:
-  //     return
-  //     (<div className={styles.awardContainer}>
-  //       <RedBagItem />
-  //       <div className={styles.exchangeConsume}>
-  //         1元兑换
-  //     </div>
-  //     </div>)
-  //   default:
-  //     return <RedBagItem />
-  // }
+
+  let ContentComponent;
+
+  switch (item.rewardType) {
+    case 0:
+      ContentComponent = RedBagItem
+      break
+    case 2:
+      ContentComponent = CouponItem
+      break
+    default:
+      ContentComponent = RedBagItem
+  }
 
   return (<div className={styles.awardContainer}>
-    <RedBagItem />
+    <ContentComponent />
     <div className={styles.exchangeConsume}>
       1元兑换
       </div>

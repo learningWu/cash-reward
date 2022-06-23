@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   margin: 20px 0 0 20px;
   break-inside: avoid;
   .exchangeConsume {
@@ -21,6 +22,8 @@
     font-weight: 600;
     color: rgba(255, 255, 255, 1);
     line-height: 48px;
+    position: absolute;
+    bottom: 20px;
     text-align: center;
   }
 }
@@ -35,6 +38,8 @@
   background: url("https://m.360buyimg.com/mobilecal/jfs/t1/197922/8/12253/3788/61613756Ee865f89b/294ce55672d8bf9b.png");
   background-size: contain;
   background-repeat: no-repeat;
+  position: absolute;
+  bottom: 97px;
   .redBagInfo {
     display: flex;
     flex-direction: row;
@@ -49,6 +54,52 @@
     .money {
       font-size: 52px;
     }
+  }
+}
+
+.couponItemContainer {
+  width: 176px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("https://m.360buyimg.com/mobilecal/jfs/t1/174908/3/24155/2656/61613754E74b0c2f5/ac430116a0319a96.png");
+  background-size: contain;
+  justify-content: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 94px;
+  .quota {
+    font-size: 14px;
+    font-family: PingFangSC;
+    margin-top: 15px;
+    position: absolute;
+    left: 23px;
+    top: 6px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+  }
+  .couponInfo {
+    display: flex;
+    flex-direction: row;
+    font-family: JDZhengHT;
+    font-weight: normal;
+    margin-top: 40px;
+    align-items: baseline;
+    transform: translateY(-20px);
+    color: rgba(255, 192, 144, 1);
+    .unit {
+      font-size: 20px;
+    }
+    .money {
+      font-size: 52px;
+    }
+  }
+  .limitStr {
+    font-size: 20px;
+    font-family: PingFangTC;
+    font-weight: normal;
+    color: rgba(254, 51, 51, 1);
   }
 }
 
