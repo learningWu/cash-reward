@@ -16,8 +16,11 @@ import { ErrorBoundary } from '@pango/ui';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from '../reducer/exchangeRecordRootReducer.js'
-const store = createStore(rootReducer, applyMiddleware(fetchMiddleware))
 import fetchMiddleware from '../middleware/fetchMiddleware.js'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(fetchMiddleware)))
+
 export default () => {
   // getData("cash_mob_home", {}).then((result) => {
   //   console.log(result)

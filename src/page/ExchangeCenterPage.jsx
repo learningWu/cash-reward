@@ -24,9 +24,9 @@ import { ErrorBoundary } from '@pango/ui';
 import styles from './style.module.scss';
 import { connect } from 'react-redux'
 import { getFetchAction } from '../action/createAction'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-
-const store = createStore(rootReducer, applyMiddleware(fetchMiddleware))
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(fetchMiddleware)))
 
 const ExchangeCenterPageContent = (props) => {
   useEffect(() => {
