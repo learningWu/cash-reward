@@ -11,7 +11,7 @@ const ExchangeRedBagPop = (props) => {
             <div className={styles.des}>兑换后红包请至我的-红包查看</div>
             <div className={styles.action}>
                 <div className={styles.cancel} onClick={() => typeof cancel === 'function' && cancel()}>继续攒钱</div>
-                <div className={styles.confirm} onClick={() => typeof confirm === 'function' && cancel()}>去兑换</div>
+                <div className={styles.confirm} onClick={() => typeof confirm === 'function' && confirm(modalData)}>去兑换</div>
             </div>
         </div>
     </div>)

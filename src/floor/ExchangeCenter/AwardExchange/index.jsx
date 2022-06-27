@@ -10,16 +10,37 @@ import { getFetchAction } from '../../../action/createAction'
 import Tabs from '../../../components/tabs/Tabs.jsx'
 import AwardExchangeSwiper from '../../../components/AwardExchangeSwiper'
 import ExchangeRedBagPop from '../../../components/ExchangeRedBagPop'
+import ExchangeRedBagSuccessPop from '../../../components/ExchangeRedBagSuccessPop'
 import Modal from '../../../components/Modal'
+import {
+    getData
+} from '../../../common/util/network.js'
+
 
 const AwardExchange = (props) => {
+    // 兑换确认弹框
     const [showModal, setShowModal] = useState(false)
     const [modalData, setModalData] = useState(null)
     const cancel = () => {
         setShowModal(false)
     }
-    const confirm = () => {
+    const confirm = (data) => {
         setShowModal(false)
+        getData("cash_exchange_sendHongbao", {
+            assignmentId: data.assignmentId
+        }).then((res) => {
+            console.log("cash_exchange_sendHongbao", res)
+        }).catch((reason) => {
+            console.log("cash_exchange_sendHongbao catch", reason)
+            // todo(wzx): 测试
+            setshowSuccessModal(true)
+        })
+    }
+
+    // 兑换成功弹框
+    const [showSuccessModal, setshowSuccessModal] = useState(false)
+    const toUse = () => {
+        setshowSuccessModal(false)
     }
 
     console.log("AwardExchange", props.rewardExchangePanel)
@@ -57,7 +78,10 @@ const AwardExchange = (props) => {
             }}
         />
         {showModal && <Modal>
-            <ExchangeRedBagPop cancel={cancel} confirm={confirm} modalData={modalData}/>
+            <ExchangeRedBagPop cancel={cancel} confirm={confirm} modalData={modalData} />
+        </Modal>}
+        {showSuccessModal && <Modal>
+            <ExchangeRedBagSuccessPop confirm={toUse} />
         </Modal>}
     </div>
 }
