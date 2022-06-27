@@ -9,8 +9,18 @@ import { getFetchAction } from '../../../action/createAction'
 // import Swiper from '../../../components/Swiper/index.jsx'
 import Tabs from '../../../components/tabs/Tabs.jsx'
 import AwardExchangeSwiper from '../../../components/AwardExchangeSwiper'
+import ExchangeRedBagPop from '../../../components/ExchangeRedBagPop'
+import Modal from '../../../components/Modal'
 
 const AwardExchange = (props) => {
+    const [showModal, setShowModal] = useState(true)
+    const cancel = () => {
+        setShowModal(false)
+    }
+    const confirm = () => {
+        setShowModal(false)
+    }
+
     console.log("AwardExchange", props.rewardExchangePanel)
     const { rewardExchangePanel } = props
     const [activeIndex, setActiveIndex] = useState(0)
@@ -40,6 +50,9 @@ const AwardExchange = (props) => {
             onSlideChangeListener={onTabChange}
             rewardExchangePanel={rewardExchangePanel}
         />
+        {showModal && <Modal>
+            <ExchangeRedBagPop cancel={cancel} confirm={confirm}/>
+        </Modal>}
     </div>
 }
 export default connect(({ homeData }) => ({ rewardExchangePanel: homeData.rewardExchangePanel })

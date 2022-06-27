@@ -14,12 +14,7 @@ class ExchangeRecord extends React.Component {
         super(props)
     }
 
-    componentWillMount() {
-        console.log("卸载 ExchangeRecord")
-    }
-
     componentDidMount() {
-        console.log("转在 ExchangeRecord")
         this.props.fetchList && this.props.fetchList()
     }
 

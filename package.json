@@ -15,8 +15,10 @@
     "@pango/core": "^0.1.4-9",
     "@pango/ui": "0.0.1-beta.8",
     "@reduxjs/toolkit": "^1.8.2",
+    "antd": "^4.21.3",
     "classnames": "^2.3.1",
     "core-js": "^3.16.0",
+    "immutable": "^4.1.0",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
     "react": "^17.0.2",
@@ -25,6 +27,7 @@
     "react-redux": "^5.1.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^5.1.0",
+    "react-transition-group": "^4.4.2",
     "redux": "^3.6.0",
     "redux-saga": "^0.15.3",
     "swiper": "^8.2.4"
