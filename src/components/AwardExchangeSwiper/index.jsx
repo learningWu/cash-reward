@@ -68,7 +68,7 @@ const AwardExchangeItem = (props) => {
       ContentComponent = null
   }
 
-  return (ContentComponent && <div className={styles.awardContainer}>
+  return (ContentComponent && <div className={styles.awardContainer} onClick={() => props.onClickItem(item)} >
     {ContentComponent}
     <div className={styles.exchangeConsume}>
       {item.cost}元兑换
@@ -82,7 +82,7 @@ const AwardExchangeList = (props) => {
   return (
     <div className={styles.listContainer}>
       {awardExchangeList.map((item) => {
-        return <AwardExchangeItem item={item}  key={item.assignmentId}/>
+        return <AwardExchangeItem item={item} key={item.assignmentId} onClickItem={props.onClickItem} />
       })}
     </div>
   )
@@ -112,7 +112,7 @@ export default (props) => {
     >
       {roundList.map((item) => {
         return <SwiperSlide key={item.beginTime}>
-          <AwardExchangeList awardExchangeList={item.rewardList} />
+          <AwardExchangeList awardExchangeList={item.rewardList} onClickItem={props.onClickItem} />
         </SwiperSlide>
       })}
     </Swiper>

@@ -13,7 +13,8 @@ import ExchangeRedBagPop from '../../../components/ExchangeRedBagPop'
 import Modal from '../../../components/Modal'
 
 const AwardExchange = (props) => {
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
+    const [modalData, setModalData] = useState(null)
     const cancel = () => {
         setShowModal(false)
     }
@@ -49,9 +50,14 @@ const AwardExchange = (props) => {
             activeIndex={activeIndex}
             onSlideChangeListener={onTabChange}
             rewardExchangePanel={rewardExchangePanel}
+            onClickItem={(itemData) => {
+                // 展示 modal
+                !showModal && setShowModal(true)
+                setModalData(itemData)
+            }}
         />
         {showModal && <Modal>
-            <ExchangeRedBagPop cancel={cancel} confirm={confirm}/>
+            <ExchangeRedBagPop cancel={cancel} confirm={confirm} modalData={modalData}/>
         </Modal>}
     </div>
 }
