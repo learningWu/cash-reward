@@ -11,6 +11,7 @@ import Tabs from '../../../components/tabs/Tabs.jsx'
 import AwardExchangeSwiper from '../../../components/AwardExchangeSwiper'
 import ExchangeRedBagPop from '../../../components/ExchangeRedBagPop'
 import ExchangeRedBagSuccessPop from '../../../components/ExchangeRedBagSuccessPop'
+import ExchangeCouponSuccessPop from '../../../components/ExchangeCouponSuccessPop'
 import Modal from '../../../components/Modal'
 import {
     getData
@@ -27,7 +28,7 @@ const AwardExchange = (props) => {
     const confirm = (data) => {
         setShowModal(false)
         getData("cash_exchange_sendHongbao", {
-            assignmentId: data.assignmentId
+            // assignmentId: data.assignmentId
         }).then((res) => {
             console.log("cash_exchange_sendHongbao", res)
         }).catch((reason) => {
