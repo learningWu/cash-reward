@@ -27,21 +27,46 @@ const AwardExchange = (props) => {
     }
     const confirm = (data) => {
         setShowModal(false)
-        getData("cash_exchange_sendHongbao", {
-            // assignmentId: data.assignmentId
-        }).then((res) => {
-            console.log("cash_exchange_sendHongbao", res)
-        }).catch((reason) => {
-            console.log("cash_exchange_sendHongbao catch", reason)
-            // todo(wzx): 测试
-            setshowSuccessModal(true)
-        })
+        // 区分兑换类型
+        switch (data.rewardType) {
+            case 0:
+                getData("cash_exchange_sendHongbao", {
+                    // assignmentId: data.assignmentId
+                }).then((res) => {
+                    console.log("cash_exchange_sendHongbao", res)
+                }).catch((reason) => {
+                    console.log("cash_exchange_sendHongbao catch", reason)
+                    // todo(wzx): 测试
+                    setshowSuccessModal(true)
+                })
+                break;
+            case 2:
+                getData("cash_exchange_sendCoupon", {
+                    // assignmentId: data.assignmentId
+                    // couponRoundKey: data.couponRoundKey
+                }).then((res) => {
+                    console.log("cash_exchange_sendCoupon", res)
+                }).catch((reason) => {
+                    console.log("cash_exchange_sendCoupon catch", reason)
+                    // todo(wzx): 测试
+                    setshowCouponSuccessModal(true)
+                })
+                break;
+        }
+
+
     }
 
-    // 兑换成功弹框
+    // 兑换红包成功弹框
     const [showSuccessModal, setshowSuccessModal] = useState(false)
     const toUse = () => {
         setshowSuccessModal(false)
+    }
+
+    // 兑换优惠券成功弹框
+    const [showCouponSuccessModal, setshowCouponSuccessModal] = useState(false)
+    const toUseCoupon = () => {
+        setshowCouponSuccessModal(false)
     }
 
     console.log("AwardExchange", props.rewardExchangePanel)
@@ -83,6 +108,9 @@ const AwardExchange = (props) => {
         </Modal>}
         {showSuccessModal && <Modal>
             <ExchangeRedBagSuccessPop confirm={toUse} />
+        </Modal>}
+        {showCouponSuccessModal && <Modal>
+            <ExchangeCouponSuccessPop confirm={toUseCoupon} modalData={modalData} />
         </Modal>}
     </div>
 }
