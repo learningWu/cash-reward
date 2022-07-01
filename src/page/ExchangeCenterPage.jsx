@@ -20,13 +20,14 @@ import React, {
 } from 'react';
 import rootReducer from '../reducer/exchangeCenterRootReducer.js'
 import fetchMiddleware from '../middleware/fetchMiddleware.js'
+import mockMiddleware from '../middleware/mockMiddleware.js'
 import { ErrorBoundary } from '@pango/ui';
 import styles from './style.module.scss';
 import { connect } from 'react-redux'
 import { getFetchAction } from '../action/createAction'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(fetchMiddleware)))
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(mockMiddleware, fetchMiddleware)))
 
 const ExchangeCenterPageContent = (props) => {
   useEffect(() => {
@@ -52,9 +53,16 @@ const mapStateToProps = ({ homeData }) => {
 const mapDispatchToProps = dispatch => {
   console.log("mapDispatchToProps", dispatch)
   return {
-    fetchHomeData: (params) => dispatch(getFetchAction({
-      functionId: "cash_exchange_center"
-    }))
+    // fetchHomeData: (params) => dispatch(getFetchAction({
+    //   functionId: "cash_exchange_center"
+    // }))
+    // todo(wzx):mock
+    fetchHomeData: (params) => dispatch({
+      ...getFetchAction({
+        functionId: "cash_exchange_center"
+      }),
+      mock : true
+    })
   }
 }
 

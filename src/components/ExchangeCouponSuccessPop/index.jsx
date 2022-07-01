@@ -2,9 +2,7 @@ import React, { useContext, useRef, useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import styles from './style.module.scss';
 
-const ExchangeCouponSuccessPop = (props) => {
-    console.log("ExchangeCouponSuccessPop", props)
-    const { modalData, cancel, confirm } = props
+const ExchangeCouponSuccessPop = ({ modalData, cancel, confirm }) => {
     const {
         disCount,
         quota,
