@@ -12,6 +12,7 @@ import AwardExchangeSwiper from '../../../components/AwardExchangeSwiper'
 import ExchangeRedBagPop from '../../../components/ExchangeRedBagPop'
 import ExchangeRedBagSuccessPop from '../../../components/ExchangeRedBagSuccessPop'
 import ExchangeCouponSuccessPop from '../../../components/ExchangeCouponSuccessPop'
+import CouponDisplayPop from '../../../components/CouponDisplayPop'
 import Modal from '../../../components/Modal'
 import {
     getData
@@ -69,6 +70,9 @@ const AwardExchange = (props) => {
         setshowCouponSuccessModal(false)
     }
 
+    // 优惠券展示弹框
+    const [showCouponDisplayModal, setshowCouponDisplayModal] = useState(false)
+
     console.log("AwardExchange", props.rewardExchangePanel)
     const { rewardExchangePanel } = props
     const [activeIndex, setActiveIndex] = useState(0)
@@ -97,9 +101,15 @@ const AwardExchange = (props) => {
             activeIndex={activeIndex}
             onSlideChangeListener={onTabChange}
             rewardExchangePanel={rewardExchangePanel}
-            onClickItem={(itemData) => {
-                // 展示 modal
-                !showModal && setShowModal(true)
+            onClickItem={(itemData, e) => {
+                console.log("e", e)
+                if (e.target && e.target.id === 'couponItem') {
+                    // 展示优惠券信息
+                    !showCouponDisplayModal && setshowCouponDisplayModal(true)
+                } else {
+                    // 展示 兑换弹窗
+                    !showModal && setShowModal(true)
+                }
                 setModalData(itemData)
             }}
         />
@@ -111,6 +121,9 @@ const AwardExchange = (props) => {
         </Modal>}
         {showCouponSuccessModal && <Modal>
             <ExchangeCouponSuccessPop confirm={toUseCoupon} modalData={modalData} />
+        </Modal>}
+        {showCouponDisplayModal && <Modal>
+            <CouponDisplayPop modalData={modalData} clickShadow={() => { setshowCouponDisplayModal(false) }} />
         </Modal>}
     </div>
 }

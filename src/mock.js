@@ -56,7 +56,7 @@ const cash_exchange_center = {
                 "limitStr": "优惠券使用范围", // 优惠券使用范围
                 "beginTime2EndTime": "", // 优惠券时间
                 "couponRoundKey": "", // 优惠券round key，领券时需要透传
-                "couponName": "" // 优惠券名称
+                "couponName": "5元水果券" // 优惠券名称
               },
               // ...
             ]

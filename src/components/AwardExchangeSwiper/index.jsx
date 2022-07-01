@@ -43,7 +43,7 @@ const CouponItem = (props) => {
     couponRoundKey, // 优惠券round key，领券时需要透传
     couponName // 优惠券名称
   } = props
-  return (<div className={styles.couponItemContainer}>
+  return (<div className={styles.couponItemContainer} id='couponItem'>
     <div className={styles.quota}>{quota}</div>
     <div className={styles.couponInfo}>
       <span className={styles.unit}>¥</span>
@@ -68,7 +68,7 @@ const AwardExchangeItem = (props) => {
       ContentComponent = null
   }
 
-  return (ContentComponent && <div className={styles.awardContainer} onClick={() => props.onClickItem(item)} >
+  return (ContentComponent && <div className={styles.awardContainer} onClick={(e) => props.onClickItem(item, e)} >
     {ContentComponent}
     <div className={styles.exchangeConsume}>
       {item.cost}元兑换

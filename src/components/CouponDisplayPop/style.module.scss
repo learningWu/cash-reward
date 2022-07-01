@@ -1,0 +1,85 @@
+.shadowContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.contentContainer {
+  width: 633px;
+  height: 544px;
+  display: flex;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: url("https://m.360buyimg.com/mobilecal/jfs/t1/215185/36/9353/45989/61cafc63Ef3fc39d8/3f49275457da27ad.png");
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  border-radius: 40px;
+  .title {
+    font-size: 30px;
+    font-family: HYQiHei;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 1);
+    margin: 257px auto 0;
+  }
+  .couponInfo {
+    margin: 10px auto 0;
+    background-repeat: no-repeat;
+    background-size: 497px 200px;
+    width: 497px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .amount {
+      font-size: 80px;
+      font-family: JDZhengHT;
+      font-weight: normal;
+      color: rgba(254, 51, 51, 1);
+      width: 158px;
+      text-align: center;
+      margin-left: 25px;
+      position: relative;
+      &::before {
+        content: '￥';
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        font-size: 40px;
+        font-family: JDZhengHT;
+        font-weight: normal;
+        color: rgba(253, 33, 56, 1);
+      }
+    }
+    .detailInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 15px;
+      height: 105px;
+      .productLimit {
+        font-size: 24px;
+        font-family: PingFang-SC;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 1);
+      }
+      .costLimit {
+        font-size: 24px;
+        font-family: PingFang-SC;
+        font-weight: 500;
+        color: rgba(254, 51, 51, 1);
+      }
+      .date {
+        font-size: 20px;
+        font-family: PingFang-SC;
+        font-weight: 500;
+        color: rgba(176, 176, 176, 1);
+      }
+    }
+  }
+}
