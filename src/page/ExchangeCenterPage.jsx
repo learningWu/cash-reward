@@ -61,7 +61,7 @@ const mapDispatchToProps = dispatch => {
       ...getFetchAction({
         functionId: "cash_exchange_center"
       }),
-      mock : true
+      // mock : true
     })
   }
 }

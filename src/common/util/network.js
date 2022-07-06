@@ -1,5 +1,5 @@
 import axios from "axios"
-const ISBETA = false
+const ISBETA = true
 const BASEURL = ISBETA ? "//beta-api.m.jd.com" : "//api.m.jd.com"
 
 const NetworkTool = axios.create({

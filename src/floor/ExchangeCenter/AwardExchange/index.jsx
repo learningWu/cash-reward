@@ -32,7 +32,7 @@ const AwardExchange = (props) => {
         switch (data.rewardType) {
             case 0:
                 getData("cash_exchange_sendHongbao", {
-                    // assignmentId: data.assignmentId
+                    assignmentId: data.assignmentId
                 }).then((res) => {
                     console.log("cash_exchange_sendHongbao", res)
                 }).catch((reason) => {
@@ -43,8 +43,8 @@ const AwardExchange = (props) => {
                 break;
             case 2:
                 getData("cash_exchange_sendCoupon", {
-                    // assignmentId: data.assignmentId
-                    // couponRoundKey: data.couponRoundKey
+                    assignmentId: data.assignmentId,
+                    couponRoundKey: data.couponRoundKey
                 }).then((res) => {
                     console.log("cash_exchange_sendCoupon", res)
                 }).catch((reason) => {

@@ -29,7 +29,7 @@ const Withdraw = (props) => {
         2: 50,
         3: 100
     }
-
+    JSON.stringify
     const getNodeProgress = (node) => nodeToProgress[Math.max(Math.min(node, 3), 0)]
 
     let withdrawProgressMetaList, completedProgress, waitWithdraw, withdrawProgressMeta
@@ -45,12 +45,13 @@ const Withdraw = (props) => {
                 status: item.status === 1 ? "completed" : "unCompleted",
             }
         })
-
+        completedProgress = waitWithdraw ?
+            getNodeProgress(waitWithdraw.node - 1) + (getNodeProgress(waitWithdraw.node) - getNodeProgress(waitWithdraw.node - 1)) * parseFloat(percentProgress)
+            : 100
         // 进度条数据源
         withdrawProgressMeta = {
             withdrawProgressMetaList,
-            completedProgress:
-                getNodeProgress(waitWithdraw.node - 1) + (getNodeProgress(waitWithdraw.node) - getNodeProgress(waitWithdraw.node - 1)) * parseFloat(percentProgress)
+            completedProgress
         }
     }
 
