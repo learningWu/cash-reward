@@ -34,11 +34,25 @@ const ExchangeCenterPageContent = (props) => {
     props.fetchHomeData()
   }, [])
 
+  let isShowMoneyHeader, isShowWithdraw, isShowAwardExchange
+  if (props && props.homeData) {
+    const { headerBanner, userMoney, withdrawList, supportCashOut, rewardExchangePanel } = props.homeData
+
+    isShowMoneyHeader = headerBanner && headerBanner.length > 0 && userMoney !== null
+
+    isShowWithdraw = withdrawList && withdrawList.length > 0 && props.homeData.supportCashOut === 1
+
+    isShowAwardExchange = rewardExchangePanel
+      && rewardExchangePanel.roundList
+      && rewardExchangePanel.roundList.length > 0
+  }
+
+
   return <div className={styles.container}>
     <NavigatorHeader />
-    <MoneyHeader />
-    <Withdraw />
-    <AwardExchange />
+    {isShowMoneyHeader && <MoneyHeader />}
+    {isShowWithdraw && <Withdraw />}
+    {isShowAwardExchange && <AwardExchange />}
   </div>
 }
 
@@ -61,7 +75,7 @@ const mapDispatchToProps = dispatch => {
       ...getFetchAction({
         functionId: "cash_exchange_center"
       }),
-      // mock : true
+      mock: true
     })
   }
 }
