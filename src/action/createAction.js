@@ -3,8 +3,12 @@ import {
 } from '../common/util/network.js'
 
 export const getFetchAction = (params) => {
+  const {
+    functionId,
+    ...bodyParams
+  } = params
   return {
-    operation: () => getData(params.functionId, null),
-    mark: params.functionId
+    operation: () => getData(functionId, bodyParams),
+    mark: functionId
   }
 }

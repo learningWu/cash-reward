@@ -8,6 +8,12 @@ import { connect } from 'react-redux'
 import { getFetchAction } from '../../../action/createAction'
 import AwardProgress from '../../../components/AwardProgress'
 import getCashWxCode from '../../../common/util/getWxCode.js'
+import {
+    getData
+} from '../../../common/util/network.js'
+import {
+    isNotEmpty
+} from '../../../common/util/util.js'
 
 const Withdraw = (props) => {
     console.log("withdraw", props)
@@ -30,7 +36,7 @@ const Withdraw = (props) => {
         2: 50,
         3: 100
     }
-    JSON.stringify
+
     const getNodeProgress = (node) => nodeToProgress[Math.max(Math.min(node, 3), 0)]
 
     let withdrawProgressMetaList, completedProgress, waitWithdraw, withdrawProgressMeta
@@ -75,12 +81,39 @@ const Withdraw = (props) => {
     /**
      * 点击提现
      */
-    const onClickWithdraw = () => {
+    async function onClickWithdraw() {
         if (getBtn() === mapStateToBtnUrl.redWithdraw) {
             // 可提现
-            getCashWxCode().then(({ code }) => {
-                alert(code)
-                console.log("wxcode", code)
+            const { code } = await getCashWxCode()
+            alert(code)
+            console.log("wxcode", code)
+
+            getData("cash_wx_withdraw", {
+                amount: waitWithdraw.amount,
+                code: code || "null"
+            }).then((res) => {
+                if (res && res.bizCode != '0' && isNotEmpty(res.bizMsg)) {
+                    alert(res.bizMsg)
+                }
+                if (isNotEmpty(res && res.result && res.result.amountYuan)) {
+                    // 提现成功
+                    // 1.展现成功弹窗及ui
+                    alert("提现成功")
+                    // 2.刷新首页接口                    
+                    dispatch({
+                        ...getFetchAction({
+                            functionId: "cash_exchange_center"
+                        }),
+                        mock: true
+                    })
+                }
+                console.log("cash_wx_withdraw", JSON.stringify(res))
+                // alert("cash_wx_withdraw" + JSON.stringify(res))
+            }).catch((reason) => {
+                const showMessage = isNotEmpty(reason.msg) ? reason.msg : "活动太火爆，请稍后再试~"
+                console.log("cash_wx_withdraw catch", JSON.stringify(reason))
+                alert(showMessage)
+                // alert("cash_wx_withdraw catch" + JSON.stringify(reason))
             })
         }
     }
