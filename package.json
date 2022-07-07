@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jmfe/jm-common": "^1.6.0-0",
+    "@jmfe/jm-common": "^1.6.0",
+    "@jmfe/jm-webview": "^1.9.4-beta.0",
     "@pango/core": "^0.1.4-9",
     "@pango/ui": "0.0.1-beta.8",
     "@reduxjs/toolkit": "^1.8.2",

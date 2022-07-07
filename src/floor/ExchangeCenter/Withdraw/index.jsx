@@ -7,6 +7,7 @@ import styles from './style.module.scss';
 import { connect } from 'react-redux'
 import { getFetchAction } from '../../../action/createAction'
 import AwardProgress from '../../../components/AwardProgress'
+import getCashWxCode from '../../../common/util/getWxCode.js'
 
 const Withdraw = (props) => {
     console.log("withdraw", props)
@@ -57,7 +58,7 @@ const Withdraw = (props) => {
 
     const getBtn = () => {
         // 判断按钮状态
-
+        console.log("waitWithdraw", waitWithdraw)
         if (withdrawList
             && withdrawList.length == 3
             && withdrawList[2].node == 3
@@ -69,6 +70,19 @@ const Withdraw = (props) => {
         }
 
         return mapStateToBtnUrl.redWithdraw
+    }
+
+    /**
+     * 点击提现
+     */
+    const onClickWithdraw = () => {
+        if (getBtn() === mapStateToBtnUrl.redWithdraw) {
+            // 可提现
+            getCashWxCode().then(({ code }) => {
+                alert(code)
+                console.log("wxcode", code)
+            })
+        }
     }
 
     return <div className={styles.container}>
@@ -83,7 +97,7 @@ const Withdraw = (props) => {
             <span className={styles.have}>{withdrawTips}</span>
         </div>
         <AwardProgress withdrawProgressMeta={withdrawProgressMeta} />
-        <img className={styles.withdrawToWX} src={getBtn()} />
+        <img className={styles.withdrawToWX} src={getBtn()} onClick={onClickWithdraw} />
     </div>
 }
 

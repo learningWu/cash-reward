@@ -21,7 +21,7 @@ const cash_exchange_center = {
         "node": 2,
         "moneyFen": 1000, //int
         "moneyYuan": "10", //string
-        "status": 0 // 0未提现  
+        "status": 2 // 0未提现  
       }, {
         "node": 3,
         "moneyFen": 3000, //int
